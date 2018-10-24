@@ -1,19 +1,29 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class MainController {
+
+    @Autowired
+    TemperatureRepository temperatureRepository;
 
     @GetMapping(value = "/")
     @ResponseBody()
     public String Index()
     {
+        System.out.println("Temperature repository count " + temperatureRepository.count());
+        List<Temperature> temperatureList = temperatureRepository.findAll();
+        for (Temperature temp : temperatureList) {
+            System.out.println(temp.getId() + ", " + temp.getRoom() + ", " + temp.getTemperature());
+        }
         return "Main page";
     }
 
@@ -27,4 +37,12 @@ public class MainController {
 
         return persons;
     }
+
+    @GetMapping("/temperature")
+    public List<Temperature> getAllPersons()
+    {
+        temperatureRepository.save(new Temperature(2, 44.2f));
+        return temperatureRepository.findAll();
+    }
+
 }
