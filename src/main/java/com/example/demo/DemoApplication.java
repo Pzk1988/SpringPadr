@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-//@ComponentScan("model")
+@ComponentScan
 public class DemoApplication {
 
 	public static void main(String[] args) {
