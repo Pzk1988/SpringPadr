@@ -41,4 +41,13 @@ public class Product implements Serializable
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString(){
+        return "Id: " + id + ", catalog number: " + catalogueNumber;
+    }
+
+    public void decrementQuantity() {
+        quantity--;
+    }
 }

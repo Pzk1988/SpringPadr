@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-</head>
+    <link href="css/style.css" rel="stylesheet" />
 <body>
-    <table border="1px">
-        <th:block th:each="product : ${products}">
-            <tr>
-                <td th:text="${product.id}">...</td>
-                <td th:text="${product.catalogueNumber}">...</td>
-                <td th:text="${product.description}">...</td>
-                <td th:text="${product.quantity}">...</td>
+        <table>
+            <tr >
+                <td>Id</td>
+                <td>Catalog number</td>
+                <td>Description</td>
+                <td>Quantity</td>
             </tr>
-        </th:block>
-    </table>
-
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <form action="#" th:action="@{/rent}" method="POST">
+                        <td th:text="${product.id}">...</td>
+                        <td th:text="${product.catalogueNumber}">...</td>
+                        <td th:text="${product.description}">...</td>
+                        <td th:text="${product.quantity}">...</td>
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                        <td>
+                            <input type="submit" value="Rent">
+                        </td>
+                    </form>
+                </tr>
+            </th:block>
+        </table>
 </body>
 </html>
