@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import com.example.demo.models.PasswordValidator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+import javax.xml.bind.DatatypeConverter;
 
 @EnableJpaAuditing
 @SpringBootApplication
